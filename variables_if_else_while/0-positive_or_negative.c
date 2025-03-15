@@ -5,7 +5,9 @@
 /**
  * main - Entry point
  *
- * Description: Assigns a random number to n and prints if it is positive, zero, or negative.
+ * Description: Assigns a random number to n and prints
+ * if it is positive, zero, or negative.
+ *
  * Return: Always 0 (Success)
  */
 int main(void)
