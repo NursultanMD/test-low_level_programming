@@ -2,48 +2,49 @@
 
 /**
  * main - Prints the first 98 Fibonacci numbers, starting with 1 and 2
- *        without using arrays, pointers, or long long.
  *
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-	unsigned int count;
-	unsigned int a1 = 1, a2 = 2;
-	unsigned int b1 = 0, b2 = 0;
-	unsigned int sum1, sum2;
-	
-	printf("%u, %u", a1, a2);
+	unsigned long int a = 1, b = 2, temp;
+	unsigned long int a1, a2, b1, b2, temp1, temp2;
+	int count;
+
+	printf("%lu, %lu", a, b);
 
 	for (count = 3; count <= 98; count++)
 	{
-		if (a2 > 4000000000) /* Разбиваем число, чтобы избежать переполнения */
+		if (a > 10000000000 || b > 10000000000) /* Разделение чисел */
 		{
-			b1 = a1;
-			b2 = a2;
-			a1 = b1 / 1000000000;
-			a2 = b1 % 1000000000;
-			b1 = b2 / 1000000000;
-			b2 = b2 % 1000000000;
+			a1 = a / 10000000000;
+			a2 = a % 10000000000;
+			b1 = b / 10000000000;
+			b2 = b % 10000000000;
+
+			temp1 = a1 + b1;
+			temp2 = a2 + b2;
+
+			if (temp2 >= 10000000000) /* Обрабатываем перенос */
+			{
+				temp1 += 1;
+				temp2 -= 10000000000;
+			}
+
+			printf(", %lu%010lu", temp1, temp2);
+
+			a1 = b1;
+			a2 = b2;
+			b1 = temp1;
+			b2 = temp2;
 		}
-
-		sum1 = a1 + b1;
-		sum2 = a2 + b2;
-
-		if (sum2 > 999999999) /* Обрабатываем перенос */
+		else
 		{
-			sum1 += 1;
-			sum2 %= 1000000000;
+			temp = a + b;
+			printf(", %lu", temp);
+			a = b;
+			b = temp;
 		}
-
-		printf(", %u", sum1);
-		if (sum2 > 0)
-			printf("%09u", sum2);
-
-		a1 = b1;
-		a2 = b2;
-		b1 = sum1;
-		b2 = sum2;
 	}
 
 	printf("\n");
