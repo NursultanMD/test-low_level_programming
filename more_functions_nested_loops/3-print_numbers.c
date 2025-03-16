@@ -5,9 +5,9 @@
  */
 void print_numbers(void)
 {
-    char nums[] = "0123456789\n";
-    int i;
+	char nums[] = "0123456789\n";
+	int i;
 
-    for (i = 0; nums[i] != '\0'; i++)
-        _putchar(nums[i]);
+	for (i = 0; nums[i] != '\0'; i++)
+		_putchar(nums[i]);
 }
